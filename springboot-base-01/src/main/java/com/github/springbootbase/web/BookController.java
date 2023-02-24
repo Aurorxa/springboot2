@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/books")
 public class BookController {
 
-    @GetMapping(value = "/view")
+    @GetMapping
     public String getById() {
         System.out.println("SpringBoot 入门");
         return "SpringBoot 入门";
