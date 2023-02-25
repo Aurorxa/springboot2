@@ -10,12 +10,15 @@
     </parent>
     <groupId>com.github</groupId>
     <artifactId>springboot-junit5</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
+
     <name>springboot-junit5</name>
     <description>springboot-junit5</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
