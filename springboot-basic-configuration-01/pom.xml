@@ -42,7 +42,7 @@
 
     <repositories>
         <repository>
-            <id>aliyunmaven</id>
+            <id>aliyun</id>
             <url>https://maven.aliyun.com/repository/public</url>
             <releases>
                 <enabled>true</enabled>
