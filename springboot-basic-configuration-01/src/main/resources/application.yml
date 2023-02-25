@@ -1,4 +1,14 @@
-# 日志
-logging:
-  level:
-    root: debug
+server:
+  port: 8081
+
+# yaml 字面量
+flag: true # TRUE、true、True、FALSE、false、False都可以
+school:
+  name: 南京大学
+  address: 江苏省南京市xxx
+  subject:
+    - Java 学科
+    - 前端学科
+    - 大数据学科
+person:
+  likes: ['吃饭','睡觉','打豆豆']
