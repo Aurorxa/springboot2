@@ -1,5 +1,6 @@
 package com.github;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.domain.User;
 import com.github.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ public class ApplicationTests {
 
     @Test
     public void test() {
-        List<User> userList = userMapper.findAll();
+        List<User> userList = userMapper.selectList(new LambdaQueryWrapper<>(User.class));
         userList.forEach(System.out::println);
     }
 

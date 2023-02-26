@@ -1,10 +1,8 @@
 package com.github.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.github.domain.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-
-import java.util.List;
 
 /**
  * @author 许大仙
@@ -12,10 +10,6 @@ import java.util.List;
  * @since 2023-02-26 07:44
  */
 @Mapper
-public interface UserMapper {
-    /**
-     * 查询所有的用户信息
-     */
-    @Select("SELECT * FROM `user`")
-    List<User> findAll();
+public interface UserMapper extends BaseMapper<User> {
+
 }
