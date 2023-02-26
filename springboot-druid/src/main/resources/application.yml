@@ -1,3 +1,15 @@
+# \u8BBE\u7F6E\u6570\u636E\u6E90\u53C2\u6570
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ssm?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+    username: root
+    password: 123456
+
+# MybatisPlus \u914D\u7F6E
+mybatis-plus:
+  configuration:
+    # \u5F00\u542F\u65E5\u5FD7\u8F93\u51FA
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # \u5F00\u542F\u9A7C\u5CF0\u529F\u80FD
+    map-underscore-to-camel-case: true
