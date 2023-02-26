@@ -1,4 +1,4 @@
-# \u8BBE\u7F6E\u6570\u636E\u6E90\u53C2\u6570
+# 设置数据源参数
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -6,10 +6,10 @@ spring:
     username: root
     password: 123456
 
-# MybatisPlus \u914D\u7F6E
+# MybatisPlus 配置
 mybatis-plus:
   configuration:
-    # \u5F00\u542F\u65E5\u5FD7\u8F93\u51FA
+    # 开启日志输出
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    # \u5F00\u542F\u9A7C\u5CF0\u529F\u80FD
+    # 开启驼峰功能
     map-underscore-to-camel-case: true
