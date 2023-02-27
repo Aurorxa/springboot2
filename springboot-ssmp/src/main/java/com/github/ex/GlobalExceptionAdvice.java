@@ -22,6 +22,7 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler(Exception.class)
     public Result<?> handleException(Exception ex) {
         log.info("GlobalExceptionAdvice ===> handleException 的异常信息是 {}", ex.getMessage());
+        ex.printStackTrace();
         return Result.error(ex.getMessage());
     }
 
@@ -34,6 +35,7 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler(BizException.class)
     public Result<?> handleBizException(BizException ex) {
         log.info("GlobalExceptionAdvice ===> handleBizException 的异常信息是 {}", ex.getMessage());
+        ex.printStackTrace();
         return Result.error(ex.getMessage());
     }
 }
