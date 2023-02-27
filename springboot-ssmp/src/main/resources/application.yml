@@ -47,7 +47,7 @@ spring:
           enabled: true
           db-type: mysql
           config:
-            delete-allow: false # 不允许执行删除
+            delete-allow: true # 运行执行删除，如果是逻辑删除，此处需要设置为 false
             update-where-none-check: true
             multi-statement-allow: true # 允许批处理
             comment-allow: true

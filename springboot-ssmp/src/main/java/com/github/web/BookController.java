@@ -27,24 +27,29 @@ public class BookController {
     @NonNull
     private BookService bookService;
 
-    @ApiOperation("新增数据")
+    @ApiOperation("新增图书")
     @PostMapping(value = "/add")
     public Result<Boolean> add(@RequestBody Book book) {
         log.info("book = {}", book);
-        return Result.success(this.bookService.save(book));
+        return this.bookService.save(book) ? Result.success() : Result.error();
     }
 
-    @ApiOperation("查询全部数据")
+    @ApiOperation("查询全部图书")
     @GetMapping(value = "/getAll")
     public Result<List<Book>> getAll() {
         return Result.success(this.bookService.list());
     }
 
-    @ApiOperation("查询详情接口")
+    @ApiOperation("查询图书详情")
     @GetMapping(value = "/view/{id}")
     public Result<Book> view(@PathVariable("id") @ApiParam(value = "主键") Integer id) {
         return Result.success(this.bookService.getById(id));
     }
 
-
+    @ApiOperation("删除图书")
+    @DeleteMapping(value = "/delete/{id}")
+    public Result<Boolean> delete(@PathVariable("id") @ApiParam(value = "主键") Integer id) {
+        return this.bookService.removeById(id) ? Result.success() : Result.error();
+    }
+    
 }

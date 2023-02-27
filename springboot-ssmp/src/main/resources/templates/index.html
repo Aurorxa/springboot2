@@ -194,10 +194,30 @@
             // 取消
             cancel() {
                 this.dialogFormVisible = false;
+                this.dialogFormVisible4Edit = false;
+                this.$message.info('当前操作取消');
             },
             // 删除
             handleDelete(row) {
-
+                this.$confirm('此操作永久删除当前信息，是否继续？', '提示', {type: 'info'}).then(() => {
+                    axios.delete(`/delete/${row.id}`).then((res) => {
+                        const {data: {status, msg}} = res;
+                        if (status) {
+                            // 提示
+                            this.$message({
+                                message: msg,
+                                type: 'success'
+                            });
+                        } else {
+                            this.$message.error(msg);
+                        }
+                    }).finally(() => {
+                        // 重新加载数据
+                        this.getAll();
+                    });
+                }).catch(() => {
+                    this.$message.info('取消操作');
+                });
             },
 
             // 弹出编辑窗口
