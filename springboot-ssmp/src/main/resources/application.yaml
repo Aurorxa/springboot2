@@ -1,0 +1,83 @@
+server:
+  port: 80 # 端口
+
+spring:
+  datasource: # 数据源的配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ssm?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true&allowMultiQueries=true
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource # 配置数据库连接池的类型
+    druid:
+      initial-size: 5 # 初始化连接池大小
+      min-idle: 10 # 最小连接
+      max-active: 20 # 最大连接
+      max-wait: 6000 # 配置获取连接等待超时的时间
+      time-between-eviction-runs-millis: 2000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 600000 # 配置一个连接在池中最小生存的时间，单位是毫秒
+      max-evictable-idle-time-millis: 900000 # 配置一个连接在池中最大生存的时间，单位是毫秒
+      validation-query: SELECT 1 # 数据库的最小检测
+      test-while-idle: true # 检测连接是否可用
+      test-on-borrow: false # 在获取连接之前是否进行测试
+      test-on-return: false # 归还连接之前是否进行测试
+      pool-prepared-statements: false # 不缓存 pstmt
+      max-pool-prepared-statement-per-connection-size: 20 # 配置 pstmt 缓存个数
+      stat-view-servlet: # 监控界面配置
+        enabled: true # 启动监控界面
+        allow: 127.0.0.1  # 白名单
+        deny: # 黑名单
+        login-username: admin # 用户名
+        login-password: 123456 # 密码
+        url-pattern: /druid/* # 访问路径
+      web-stat-filter: # WEB 访问监控
+        enabled: true # 开启 WEB 访问监控
+        url-pattern: /* # 对所有的路径进行监控
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" # 排除一些不必要的url
+        session-stat-enable: true # 开启 session 统计功能，默认为 true
+        session-stat-max-count: 1000 # sessionStatMaxCount 配置，默认为 1000
+        profile-enable: true # 配置profileEnable能够监控单个url调用的sql列表
+      filter: # 配置 Filter
+        stat: # 配置状态
+          enabled: true
+          merge-sql: true # 统计相同的 SQL 命令
+          log-slow-sql: true # 记录慢 SQL
+          slow-sql-millis: 3000 # 慢 SQL 执行的时间标准 3000
+          db-type: mysql # 数据库的类型
+        wall: # 防火墙配置
+          enabled: true
+          db-type: mysql
+          config:
+            delete-allow: false # 不允许执行删除
+            update-where-none-check: true
+            multi-statement-allow: true # 允许批处理
+            comment-allow: true
+        slf4j: # 日志配置
+          enabled: true
+          statement-executable-sql-log-enable: true # 记录执行日志
+          data-source-log-enabled: true # 开启日志功能
+          statement-sql-pretty-format: true # 美化 SQL 语句
+      aop-patterns: com.github.* # Spring 监控 AOP 切入点，如x.y.z.service.*,配置多个英文逗号分隔
+  mvc:
+    throw-exception-if-no-handler-found: true # 发现404 的时候直接抛出异常
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+  web:
+    resources:
+      add-mappings: false # 关闭默认的静态资源路径映射
+  jackson:
+    locale: zh_CN
+    date-format: yyyy-MM-dd HH:mm:ss
+
+# MybatisPlus 配置
+mybatis-plus:
+  configuration:
+    # 开启日志输出
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰功能
+    map-underscore-to-camel-case: true
+
+
+zero: # zero 配置
+  ac-table:
+    model: add_or_update
+    entity-package: com.github.domain
