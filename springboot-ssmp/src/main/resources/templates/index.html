@@ -19,12 +19,12 @@
         <div class="app-container">
             <div class="box">
                 <div class="filter-container">
-                    <el-input class="filter-item" placeholder="图书类别" style="width: 200px;"
-                              v-model="pagination.type"></el-input>
-                    <el-input class="filter-item" placeholder="图书名称" style="width: 200px;"
-                              v-model="pagination.name"></el-input>
-                    <el-input class="filter-item" placeholder="图书描述" style="width: 200px;"
-                              v-model="pagination.description"></el-input>
+                    <el-input class="filter-item" clearable placeholder="图书类别"
+                              style="width: 200px;" v-model="pagination.type"></el-input>
+                    <el-input class="filter-item" clearable placeholder="图书名称"
+                              style="width: 200px;" v-model="pagination.name"></el-input>
+                    <el-input class="filter-item" clearable placeholder="图书描述"
+                              style="width: 200px;" v-model="pagination.description"></el-input>
                     <el-button @click="getPage()" class="dalfBut">查询</el-button>
                     <el-button @click="handleCreate()" class="butT" type="primary">新建</el-button>
                 </div>
