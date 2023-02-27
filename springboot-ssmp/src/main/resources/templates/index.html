@@ -19,10 +19,13 @@
         <div class="app-container">
             <div class="box">
                 <div class="filter-container">
-                    <el-input class="filter-item" placeholder="图书类别" style="width: 200px;"></el-input>
-                    <el-input class="filter-item" placeholder="图书名称" style="width: 200px;"></el-input>
-                    <el-input class="filter-item" placeholder="图书描述" style="width: 200px;"></el-input>
-                    <el-button @click="getAll()" class="dalfBut">查询</el-button>
+                    <el-input class="filter-item" placeholder="图书类别" style="width: 200px;"
+                              v-model="pagination.type"></el-input>
+                    <el-input class="filter-item" placeholder="图书名称" style="width: 200px;"
+                              v-model="pagination.name"></el-input>
+                    <el-input class="filter-item" placeholder="图书描述" style="width: 200px;"
+                              v-model="pagination.description"></el-input>
+                    <el-button @click="getPage()" class="dalfBut">查询</el-button>
                     <el-button @click="handleCreate()" class="butT" type="primary">新建</el-button>
                 </div>
                 <el-table :data="dataList" current-row-key="id" highlight-current-row size="small" stripe>
@@ -134,7 +137,10 @@
             pagination: { // 分页相关模型数据
                 currentPage: 1, // 当前页码
                 pageSize: 10, // 每页显示的记录数
-                total: 0 // 总记录数
+                total: 0,// 总记录数
+                type: '',
+                name: '',
+                description: '',
             }
         },
         //钩子函数，Vue 对象初始化完成后自动执行
@@ -155,7 +161,11 @@
 
             // 分页查询
             getPage() {
-                axios.post(`/pageList/${this.pagination.currentPage}/${this.pagination.pageSize}`, this.formData).then(res => {
+                axios.post(`/pageList/${this.pagination.currentPage}/${this.pagination.pageSize}`, {
+                    type: this.pagination.type,
+                    name: this.pagination.name,
+                    description: this.pagination.description,
+                }).then(res => {
                     const {data: {status, data}} = res;
                     if (status) {
                         const {records, current, size, total} = data;
@@ -206,8 +216,6 @@
                             }
                         }).finally(() => {
                             // 重新加载数据
-                            this.pagination.currentPage = 1;
-                            this.pagination.pageSize = 10;
                             this.getPage();
                         });
                     }
