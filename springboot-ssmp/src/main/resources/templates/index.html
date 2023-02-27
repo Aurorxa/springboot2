@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <!-- 页面meta -->
     <meta charset="utf-8">
@@ -68,7 +68,7 @@
                             <el-row>
                                 <el-col :span="24">
                                     <el-form-item label="描述">
-                                        <el-input type="textarea" v-model="formData.desc"></el-input>
+                                        <el-input type="textarea" v-model="formData.description"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
@@ -99,7 +99,7 @@
                             <el-row>
                                 <el-col :span="24">
                                     <el-form-item label="描述">
-                                        <el-input type="textarea" v-model="formData.desc"></el-input>
+                                        <el-input type="textarea" v-model="formData.description"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
@@ -155,22 +155,45 @@
 
             // 弹出添加窗口
             handleCreate() {
-
+                this.resetForm();
+                this.dialogFormVisible = true;
             },
 
             // 重置表单
             resetForm() {
-
+                this.formData = {};
             },
 
             // 添加
             handleAdd() {
+                this.$refs['dataAddForm'].validate((valid) => {
+                    if (valid) {
+                        axios.post('/add', this.formData).then(res => {
+                            const {data: {status, msg}} = res;
+                            // 如果当前操作成功
+                            if (status) {
+                                // 提示
+                                this.$message({
+                                    message: msg,
+                                    type: 'success'
+                                });
+                                // 关闭弹窗
+                                this.dialogFormVisible = false;
+                            } else {
+                                this.$message.error(msg);
+                            }
 
+                        }).finally(() => {
+                            // 重新加载数据
+                            this.getAll();
+                        });
+                    }
+                });
             },
 
             // 取消
             cancel() {
-
+                this.dialogFormVisible = false;
             },
             // 删除
             handleDelete(row) {
