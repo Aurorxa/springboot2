@@ -1,5 +1,8 @@
 package com.github.web;
 
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.domain.Book;
 import com.github.rest.Result;
 import com.github.service.BookService;
@@ -12,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author 许大仙
@@ -58,5 +62,28 @@ public class BookController {
         log.info("book = {}", book);
         return this.bookService.updateById(book) ? Result.success() : Result.error();
     }
+
+    @ApiOperation("分页显示")
+    @PostMapping(value = "/pageList/{pageNo}/{pageSize}")
+    public Result<Page<Book>> pageList(@PathVariable("pageNo") @ApiParam(value = "页码") Integer pageNo, @PathVariable("pageSize") @ApiParam(value = "每页显示条数") Integer pageSize, @RequestBody Book book) {
+
+        LambdaQueryWrapper<Book> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(StrUtil.isNotBlank(book.getType()), Book::getType, book.getType());
+        queryWrapper.like(StrUtil.isNotBlank(book.getName()), Book::getName, book.getName());
+        queryWrapper.like(StrUtil.isNotBlank(book.getDescription()), Book::getDescription, book.getDescription());
+
+        Page<Book> page = this.bookService.page(new Page<>(pageNo, pageSize), queryWrapper);
+
+        long current = page.getCurrent();
+        long pages = page.getPages();
+        
+        // 如果当前页码值大于总页码值，重新执行查询操作，使用最大页码值作为当前页码值
+        if (current > pages) {
+            page = this.bookService.page(new Page<>(pages, pageSize), queryWrapper);
+        }
+
+        return Objects.nonNull(page) ? Result.success(page) : Result.error();
+    }
+
 
 }

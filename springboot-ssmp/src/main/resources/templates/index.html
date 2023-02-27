@@ -139,7 +139,7 @@
         },
         //钩子函数，Vue 对象初始化完成后自动执行
         created() {
-            this.getAll();
+            this.getPage();
         },
 
         methods: {
@@ -151,6 +151,28 @@
                         this.dataList = data;
                     }
                 });
+            },
+
+            // 分页查询
+            getPage() {
+                axios.post(`/pageList/${this.pagination.currentPage}/${this.pagination.pageSize}`, this.formData).then(res => {
+                    const {data: {status, data}} = res;
+                    if (status) {
+                        const {records, current, size, total} = data;
+                        this.dataList = records;
+                        this.pagination.currentPage = current;
+                        this.pagination.pageSize = size;
+                        this.pagination.total = total;
+                    }
+                });
+            },
+
+            // 切换页码
+            handleCurrentChange(currentPage) {
+                // 修改页码值为当前选中的页码值
+                this.pagination.currentPage = currentPage;
+                // 执行查询
+                this.getPage();
             },
 
             // 弹出添加窗口
@@ -182,10 +204,11 @@
                             } else {
                                 this.$message.error(msg);
                             }
-
                         }).finally(() => {
                             // 重新加载数据
-                            this.getAll();
+                            this.pagination.currentPage = 1;
+                            this.pagination.pageSize = 10;
+                            this.getPage();
                         });
                     }
                 });
@@ -197,7 +220,7 @@
                 this.dialogFormVisible4Edit = false;
                 this.$message.info('当前操作取消');
             },
-            
+
             // 删除
             handleDelete(row) {
                 this.$confirm('此操作永久删除当前信息，是否继续？', '提示', {type: 'info'}).then(() => {
@@ -214,7 +237,7 @@
                         }
                     }).finally(() => {
                         // 重新加载数据
-                        this.getAll();
+                        this.getPage();
                     });
                 }).catch(() => {
                     this.$message.info('取消操作');
@@ -233,7 +256,7 @@
                         this.$message.error('数据同步失败，自动刷新！');
                     }
                 }).finally(() => {
-                    this.getAll();
+                    this.getPage();
                 });
 
             },
@@ -258,20 +281,11 @@
                             }
                         }).finally(() => {
                             // 重新加载数据
-                            this.getAll();
+                            this.getPage();
                         });
                     }
                 });
             },
-
-            // 分页查询
-
-            // 切换页码
-            handleCurrentChange(currentPage) {
-
-            },
-
-            // 条件查询
         }
     });
 
