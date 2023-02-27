@@ -32,10 +32,10 @@ spring:
       web-stat-filter: # WEB 访问监控
         enabled: true # 开启 WEB 访问监控
         url-pattern: /* # 对所有的路径进行监控
-        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" # 排除一些不必要的url
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" # 排除一些不必要的 url
         session-stat-enable: true # 开启 session 统计功能，默认为 true
         session-stat-max-count: 1000 # sessionStatMaxCount 配置，默认为 1000
-        profile-enable: true # 配置profileEnable能够监控单个url调用的sql列表
+        profile-enable: true # 配置 profileEnable 能够监控单个 url 调用的 sql 列表
       filter: # 配置 Filter
         stat: # 配置状态
           enabled: true
@@ -58,7 +58,7 @@ spring:
           statement-sql-pretty-format: true # 美化 SQL 语句
       aop-patterns: com.github.* # Spring 监控 AOP 切入点，如x.y.z.service.*,配置多个英文逗号分隔
   mvc:
-    throw-exception-if-no-handler-found: true # 发现404 的时候直接抛出异常
+    throw-exception-if-no-handler-found: true # 发现 404 的时候直接抛出异常
     format:
       date: yyyy-MM-dd HH:mm:ss
     pathmatch:
