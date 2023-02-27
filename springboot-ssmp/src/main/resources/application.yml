@@ -1,5 +1,5 @@
 server:
-  port: 80 # 端口
+  port: 8080 # 端口
 
 spring:
   datasource: # 数据源的配置
@@ -65,7 +65,7 @@ spring:
       matching-strategy: ant_path_matcher # 路径匹配模式切换为 ant 模式
   web:
     resources:
-      add-mappings: false # 关闭默认的静态资源路径映射
+      add-mappings: true # 默认的静态资源路径映射，如果是完全的前后端分离，需要设置为 false
   jackson:
     locale: zh_CN
     date-format: yyyy-MM-dd HH:mm:ss
