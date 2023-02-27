@@ -1,6 +1,9 @@
 package com.github.web;
 
+import com.github.service.BookService;
 import io.swagger.annotations.Api;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "图书模块")
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 public class BookController {
+
+    @NonNull
+    private BookService bookService;
     
+
 }
