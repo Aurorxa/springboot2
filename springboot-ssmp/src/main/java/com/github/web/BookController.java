@@ -85,5 +85,4 @@ public class BookController {
         return Objects.nonNull(page) ? Result.success(page) : Result.error();
     }
 
-
 }

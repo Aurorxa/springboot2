@@ -10,5 +10,4 @@ import com.github.domain.Book;
  */
 public interface BookService extends IService<Book> {
 
-
 }
