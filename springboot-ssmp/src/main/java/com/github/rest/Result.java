@@ -34,6 +34,10 @@ public class Result<T> {
 
     private String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_PATTERN));
 
+    private Result() {
+        
+    }
+
     public static <T> Result<T> success(T data, String msg) {
         Result<T> result = new Result<>();
         result.setStatus(SUCCESS_STATUS);
@@ -42,15 +46,15 @@ public class Result<T> {
         return result;
     }
 
-    public static <T> Result<?> success(T data) {
+    public static <T> Result<T> success(T data) {
         return success(data, "操作成功");
     }
 
-    public static <T> Result<?> success() {
+    public static <T> Result<T> success() {
         return success(null, "操作成功");
     }
 
-    public static <T> Result<?> error(T data, String msg) {
+    public static <T> Result<T> error(T data, String msg) {
         Result<T> result = new Result<>();
         result.setStatus(ERROR_STATUS);
         result.setMsg(msg);
@@ -58,11 +62,11 @@ public class Result<T> {
         return result;
     }
 
-    public static <T> Result<?> error() {
+    public static <T> Result<T> error() {
         return error(null, "操作失败");
     }
 
-    public static <T> Result<?> error(String msg) {
+    public static <T> Result<T> error(String msg) {
         return error(null, msg);
     }
 
