@@ -69,6 +69,7 @@ spring:
   jackson:
     locale: zh_CN
     date-format: yyyy-MM-dd HH:mm:ss
+
 # MybatisPlus 配置
 mybatis-plus:
   configuration:
@@ -76,7 +77,6 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 开启驼峰功能
     map-underscore-to-camel-case: true
-
 
 zero: # zero 配置
   ac-table:

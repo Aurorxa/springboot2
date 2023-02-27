@@ -15,9 +15,19 @@ public class SsmpApplicationTests {
     private BookMapper bookMapper;
 
     @Test
-    public void contextLoads() {
+    public void testQuery() {
         List<Book> bookList = this.bookMapper.selectList(null);
         bookList.forEach(System.out::println);
+    }
+
+    @Test
+    public void test() {
+        Book book = new Book();
+        book.setType("技术图书");
+        book.setName("Java从入门到入坟");
+        book.setDescription("写的太好了");
+
+        this.bookMapper.insert(book);
     }
 
 }
