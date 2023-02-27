@@ -16,5 +16,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
 public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements BookService {
-
+    
 }
