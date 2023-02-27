@@ -224,7 +224,7 @@
             handleUpdate(row) {
                 // 根据 id 查询数据
                 axios.get(`/view/${row.id}`).then(res => {
-                    const {data: {status, data, msg}} = res;
+                    const {data: {status, data}} = res;
                     if (status && data) {
                         this.formData = data;
                         this.dialogFormVisible4Edit = true;
