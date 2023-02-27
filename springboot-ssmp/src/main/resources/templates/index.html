@@ -222,11 +222,46 @@
 
             // 弹出编辑窗口
             handleUpdate(row) {
+                // 根据 id 查询数据
+                axios.get(`/view/${row.id}`).then(res => {
+                    const {data: {status, data, msg}} = res;
+                    if (status && data) {
+                        this.formData = data;
+                        this.dialogFormVisible4Edit = true;
+                    } else {
+                        this.$message.error(msg);
+                        this.getAll();
+                        this.dialogFormVisible4Edit = false;
+                    }
+                });
 
             },
 
             // 修改
             handleEdit() {
+                this.$refs['dataEditForm'].validate((valid) => {
+                    if (valid) {
+                        axios.put('/edit', this.formData).then(res => {
+                            const {data: {status, msg}} = res;
+                            // 如果当前操作成功
+                            if (status) {
+                                // 提示
+                                this.$message({
+                                    message: msg,
+                                    type: 'success'
+                                });
+                                // 关闭弹窗
+                                this.dialogFormVisible4Edit = false;
+                            } else {
+                                this.$message.error(msg);
+                            }
+
+                        }).finally(() => {
+                            // 重新加载数据
+                            this.getAll();
+                        });
+                    }
+                });
             },
 
             // 分页查询

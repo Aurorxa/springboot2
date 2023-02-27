@@ -51,5 +51,12 @@ public class BookController {
     public Result<Boolean> delete(@PathVariable("id") @ApiParam(value = "主键") Integer id) {
         return this.bookService.removeById(id) ? Result.success() : Result.error();
     }
-    
+
+    @ApiOperation("编辑图书")
+    @PutMapping(value = "/edit")
+    public Result<Boolean> edit(@RequestBody Book book) {
+        log.info("book = {}", book);
+        return this.bookService.updateById(book) ? Result.success() : Result.error();
+    }
+
 }
