@@ -197,6 +197,7 @@
                 this.dialogFormVisible4Edit = false;
                 this.$message.info('当前操作取消');
             },
+            
             // 删除
             handleDelete(row) {
                 this.$confirm('此操作永久删除当前信息，是否继续？', '提示', {type: 'info'}).then(() => {
@@ -255,7 +256,6 @@
                             } else {
                                 this.$message.error(msg);
                             }
-
                         }).finally(() => {
                             // 重新加载数据
                             this.getAll();
