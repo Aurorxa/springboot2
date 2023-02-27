@@ -33,6 +33,5 @@ public class Book implements Serializable {
     @AcColumn(name = "`description`", comment = "图书描述")
     @TableField("`description`")
     private String description;
-
-
+    
 }
