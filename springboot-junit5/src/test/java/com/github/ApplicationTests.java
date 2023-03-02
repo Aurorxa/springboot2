@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @Slf4j
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ApplicationTests {
 
     @Autowired
@@ -15,7 +15,7 @@ public class ApplicationTests {
 
     @Test
     public void test() {
-        bookDao.add();
+        this.bookDao.add();
     }
 
 }
