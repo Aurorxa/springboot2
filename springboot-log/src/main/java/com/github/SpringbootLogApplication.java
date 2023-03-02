@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringbootConfigGradleApplication {
+public class SpringbootLogApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootConfigGradleApplication.class, args);
+        SpringApplication.run(SpringbootLogApplication.class, args);
     }
 
 }
