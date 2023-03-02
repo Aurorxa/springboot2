@@ -12,6 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SsmpApplication {
 
     public static void main(String[] args) {
+        // 禁用热部署功能
+        System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(SsmpApplication.class, args);
     }
 

@@ -69,6 +69,9 @@ spring:
   jackson:
     locale: zh_CN
     date-format: yyyy-MM-dd HH:mm:ss
+  devtools:
+    restart:
+      exclude: META-INF/maven/**,META-INF/resources/**,resources/**,static/**,public/**,templates/**,**/*Test.class,**/*Tests.class,git.properties,META-INF/build-info.properties
 
 # MybatisPlus 配置
 mybatis-plus:
@@ -82,3 +85,4 @@ zero: # zero 配置
   ac-table:
     model: add_or_update
     entity-package: com.github.domain
+

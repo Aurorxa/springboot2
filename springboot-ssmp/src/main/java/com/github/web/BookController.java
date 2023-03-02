@@ -47,6 +47,7 @@ public class BookController {
     @ApiOperation("查询图书详情")
     @GetMapping(value = "/view/{id}")
     public Result<Book> view(@PathVariable("id") @ApiParam(value = "主键") Integer id) {
+        log.info("id = {}", id);
         return Result.success(this.bookService.getById(id));
     }
 
@@ -76,7 +77,7 @@ public class BookController {
 
         long current = page.getCurrent();
         long pages = page.getPages();
-        
+
         // 如果当前页码值大于总页码值，重新执行查询操作，使用最大页码值作为当前页码值
         if (current > pages) {
             page = this.bookService.page(new Page<>(pages, pageSize), queryWrapper);
