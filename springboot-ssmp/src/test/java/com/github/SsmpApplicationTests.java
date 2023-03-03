@@ -1,33 +1,26 @@
 package com.github;
 
 import com.github.domain.Book;
-import com.github.mapper.BookMapper;
+import com.github.service.BookService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
+@Transactional
 @SpringBootTest
 public class SsmpApplicationTests {
 
     @Autowired
-    private BookMapper bookMapper;
-
-    @Test
-    public void testQuery() {
-        List<Book> bookList = this.bookMapper.selectList(null);
-        bookList.forEach(System.out::println);
-    }
+    private BookService bookService;
 
     @Test
     public void test() {
         Book book = new Book();
-        book.setType("技术图书");
-        book.setName("Java从入门到入坟");
-        book.setDescription("写的太好了");
-
-        this.bookMapper.insert(book);
+        book.setName("Java从入门到精通");
+        book.setDescription("这是一本非常垃圾的书~");
+        this.bookService.save(book);
     }
+
 
 }
