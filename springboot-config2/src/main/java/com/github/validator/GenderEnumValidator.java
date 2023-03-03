@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0
  * @since 2023-03-03 10:55
  */
-public class GenderEnumValidator implements ConstraintValidator<GenderEnumString, String> {
+public class GenderEnumValidator implements ConstraintValidator<GenderEnum, String> {
 
 
     /**
@@ -24,7 +24,7 @@ public class GenderEnumValidator implements ConstraintValidator<GenderEnumString
      * @param constraintAnnotation GenderEnumString注解
      */
     @Override
-    public void initialize(GenderEnumString constraintAnnotation) {
+    public void initialize(GenderEnum constraintAnnotation) {
         this.genderEnumStringList = Arrays.asList(constraintAnnotation.value());
     }
 

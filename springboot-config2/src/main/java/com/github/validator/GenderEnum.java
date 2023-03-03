@@ -19,8 +19,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = {GenderEnumValidator.class})
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
-@Repeatable(GenderEnumString.List.class)
-public @interface GenderEnumString {
+@Repeatable(GenderEnum.List.class)
+public @interface GenderEnum {
 
     String message() default "{javax.validation.constraints.GenderEnumString.message}";
 
@@ -41,7 +41,7 @@ public @interface GenderEnumString {
     @Retention(RUNTIME)
     @Documented
     public @interface List {
-        GenderEnumString[] value();
+        GenderEnum[] value();
     }
 
 }

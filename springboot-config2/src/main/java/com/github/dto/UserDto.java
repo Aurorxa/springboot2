@@ -1,6 +1,6 @@
 package com.github.dto;
 
-import com.github.validator.GenderEnumString;
+import com.github.validator.GenderEnum;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,7 +34,7 @@ public class UserDto implements Serializable {
     @Max(value = 120, message = "年龄不能大于 120 岁")
     private Integer age;
 
-    @GenderEnumString(value = {"M", "F"}, message = "性别只能是 M 或 F")
+    @GenderEnum(value = {"M", "F"}, message = "性别只能是 M 或 F")
     private String gender;
 
 }
