@@ -16,6 +16,8 @@ import java.time.LocalDate;
 @Data
 public class UserDto implements Serializable {
 
+    private String id;
+
     @NotBlank(message = "用户名不能为空")
     private String username;
 
