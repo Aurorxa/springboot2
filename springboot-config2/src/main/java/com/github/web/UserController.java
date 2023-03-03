@@ -1,14 +1,13 @@
 package com.github;
 
 import com.github.dto.UserDto;
+import com.github.validate.ValidGroup;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.constraints.Email;
 
 /**
  * @author 许大仙
@@ -23,38 +22,20 @@ import javax.validation.constraints.Email;
 public class UserController {
 
     /**
-     * RequestBody 校验
-     *
-     * @param userDto
-     * @return
+     * 新增接口
      */
-    @PostMapping("/valid/test1")
-    public String test1(@Validated @RequestBody UserDto userDto) {
-        log.info("userDto is {}", userDto);
-        return "test1 valid success";
+    @PostMapping("/add")
+    public String add(@Validated(value = ValidGroup.Add.class) @RequestBody UserDto userDto) {
+        log.info("add = {}", userDto);
+        return "add";
     }
 
     /**
-     * Form 校验
-     *
-     * @param userDto
-     * @return
+     * 更新接口
      */
-    @PostMapping(value = "/valid/test2")
-    public String test2(@Validated UserDto userDto) {
-        log.info("validEntity is {}", userDto);
-        return "test2 valid success";
-    }
-
-    /**
-     * 单个参数校验
-     *
-     * @param email
-     * @return
-     */
-    @PostMapping(value = "/valid/test3")
-    public String test3(@Email(message = "邮箱格式错误") String email) {
-        log.info("email is {}", email);
-        return "email valid success";
+    @PostMapping("/edit")
+    public String edit(@Validated(value = ValidGroup.Edit.class) @RequestBody UserDto userDto) {
+        log.info("add = {}", userDto);
+        return "edit";
     }
 }

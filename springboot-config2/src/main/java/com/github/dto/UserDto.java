@@ -1,5 +1,6 @@
 package com.github.dto;
 
+import com.github.validate.ValidGroup;
 import com.github.validator.GenderEnum;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +17,11 @@ import java.time.LocalDate;
 @Data
 public class UserDto implements Serializable {
 
+    @Null(message = "新增的时候不需要传递 id", groups = ValidGroup.Add.class)
+    @NotBlank.List(value = {
+            @NotBlank(message = "更新的时候需要传递 id", groups = ValidGroup.Edit.class),
+            @NotBlank(message = "删除的时候需要传递 id", groups = {ValidGroup.Delete.class}),
+    })
     private String id;
 
     @NotBlank(message = "用户名不能为空")
