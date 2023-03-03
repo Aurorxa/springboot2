@@ -1,4 +1,4 @@
-package com.github;
+package com.github.web;
 
 import com.github.dto.UserDto;
 import com.github.validate.ValidGroup;
