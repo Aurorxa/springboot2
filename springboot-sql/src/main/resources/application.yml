@@ -5,6 +5,13 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/ssm?useunicode=true&characterencoding=utf-8&autoreconnect=true&usessl=false&servertimezone=gmt%2b8&allowpublickeyretrieval=true&nullcatalogmeanscurrent=true
     username: root
     password: 123456
+    hikari:
+      maximum-pool-size: 12 # \u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u5C0F\u4E8E\u7B49\u4E8E0\u4F1A\u88AB\u91CD\u7F6E\u4E3A\u9ED8\u8BA4\u503C10\uFF1B\u5927\u4E8E\u96F6\u5C0F\u4E8E1\u4F1A\u88AB\u91CD\u7F6E\u4E3Aminimum-idle\u7684\u503C
+      connection-timeout: 60000  # \u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4:\u6BEB\u79D2\uFF0C\u5C0F\u4E8E250\u6BEB\u79D2\uFF0C\u5426\u5219\u88AB\u91CD\u7F6E\u4E3A\u9ED8\u8BA4\u503C30\u79D2
+      minimum-idle: 10  # \u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\uFF0C\u9ED8\u8BA4\u503C10\uFF0C\u5C0F\u4E8E0\u6216\u5927\u4E8Emaximum-pool-size\uFF0C\u90FD\u4F1A\u91CD\u7F6E\u4E3Amaximum-pool-size
+      idle-timeout: 500000  # \u7A7A\u95F2\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4\uFF0C\u9ED8\u8BA4\u503C600000\uFF0810\u5206\u949F\uFF09\uFF0C\u5927\u4E8E\u7B49\u4E8Emax-lifetime\u4E14max-lifetime>0\uFF0C\u4F1A\u88AB\u91CD\u7F6E\u4E3A0\uFF1B\u4E0D\u7B49\u4E8E0\u4E14\u5C0F\u4E8E10\u79D2\uFF0C\u4F1A\u88AB\u91CD\u7F6E\u4E3A10\u79D2\u3002
+      max-lifetime: 540000  # \u8FDE\u63A5\u6700\u5927\u5B58\u6D3B\u65F6\u95F4.\u4E0D\u7B49\u4E8E0\u4E14\u5C0F\u4E8E30\u79D2\uFF0C\u4F1A\u88AB\u91CD\u7F6E\u4E3A\u9ED8\u8BA4\u503C30\u5206\u949F.\u8BBE\u7F6E\u5E94\u8BE5\u6BD4mysql\u8BBE\u7F6E\u7684\u8D85\u65F6\u65F6\u95F4\u77ED
+      connection-test-query: SELECT 1    # \u8FDE\u63A5\u6D4B\u8BD5\u67E5\u8BE2
 
 # mybatis \u914D\u7F6E http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/
 mybatis:
