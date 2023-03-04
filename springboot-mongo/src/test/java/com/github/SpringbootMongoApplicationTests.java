@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.util.List;
+
 @SpringBootTest
 public class SpringbootMongoApplicationTests {
 
@@ -20,6 +22,12 @@ public class SpringbootMongoApplicationTests {
         book.setName("Java从入门到入坟");
         book.setDescription("这是一本非常棒的书籍，完美的记录了您的一生^_^");
         this.mongoTemplate.save(book);
+    }
+
+    @Test
+    public void testFind() {
+        List<Book> bookList = this.mongoTemplate.findAll(Book.class);
+        bookList.forEach(System.out::println);
     }
 
 }
