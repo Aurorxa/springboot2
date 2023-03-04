@@ -12,6 +12,7 @@ public class SpringbootMongoApplicationTests {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+
     @Test
     public void testSave() {
         Book book = new Book();
