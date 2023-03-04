@@ -4,3 +4,14 @@ spring:
     port: 6379
     password: 123456
     database: 0
+    client-type: lettuce # \u5BA2\u6237\u7AEF\uFF0C\u901A\u8FC7\u8FD9\u4E2A\u5C5E\u6027\u6765\u5207\u6362\u5BA2\u6237\u7AEF
+    lettuce:
+      pool:
+        max-idle: 16
+        max-active: 32
+        min-idle: 8
+    jedis:
+      pool:
+        max-idle: 16
+        max-active: 32
+        min-idle: 8
