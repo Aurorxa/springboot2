@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 @SpringBootTest
-public class SpringbootMongoApplicationTests {
+public class SpringbootMongoTemplateApplicationTests {
 
     @Autowired
     private MongoTemplate mongoTemplate;

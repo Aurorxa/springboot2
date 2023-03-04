@@ -1,6 +1,7 @@
 package com.github.domain;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @since 2023-02-26 07:42
  */
 @Data
+@Accessors(chain = true)
 public class Book implements Serializable {
 
     private String id;
