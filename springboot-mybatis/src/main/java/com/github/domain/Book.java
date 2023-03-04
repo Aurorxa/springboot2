@@ -10,18 +10,14 @@ import java.io.Serializable;
  * @since 2023-02-26 07:42
  */
 @Data
-public class User implements Serializable {
+public class Book implements Serializable {
 
-    private Long id;
+    private Integer id;
 
-    private String userName;
-
-    private String password;
+    private String type;
 
     private String name;
 
-    private Integer age;
-
-    private String email;
+    private String description;
 
 }

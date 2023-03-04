@@ -1,6 +1,6 @@
 package com.github.mapper;
 
-import com.github.domain.User;
+import com.github.domain.Book;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -12,10 +12,10 @@ import java.util.List;
  * @since 2023-02-26 07:44
  */
 @Mapper
-public interface UserMapper {
+public interface BookMapper {
     /**
      * 查询所有的用户信息
      */
-    @Select("SELECT * FROM `user`")
-    List<User> findAll();
+    @Select("SELECT * FROM `book`")
+    List<Book> findAll();
 }

@@ -9,15 +9,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class ApplicationTests {
-
-    @Autowired
-    private BookMapper bookMapper;
+public class SpringbootSqlApplicationTests {
 
     @Test
-    public void test() {
-        List<Book> bookList = this.bookMapper.findAll();
-        bookList.forEach(System.out::println);
+    public void test(@Autowired BookMapper bookMapper) {
+        List<Book> userList = bookMapper.findAll();
+        userList.forEach(System.out::println);
+
     }
 
 }
