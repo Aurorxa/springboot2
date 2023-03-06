@@ -1,4 +1,4 @@
-package com.github.springbootes7;
+package com.github;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
