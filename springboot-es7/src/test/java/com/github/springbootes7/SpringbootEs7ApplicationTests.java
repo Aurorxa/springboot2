@@ -14,7 +14,6 @@ public class SpringbootEs7ApplicationTests {
     @Test
     public void test() {
         
-
     }
 
 }
